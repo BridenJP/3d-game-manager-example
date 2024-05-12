@@ -1,4 +1,4 @@
-# Godot 4 Simple Game Example
+# Godot 4 Simple Game Example - Touch the Blue Box
 
 This repository contains a simple game example developed in Godot 4, demonstrating the use of a game manager to handle loadable levels and manage the game lifecycle. The project is designed to help you understand the basic structure of a Godot game with multiple levels and state management.
 
