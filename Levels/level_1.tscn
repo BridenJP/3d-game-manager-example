@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://mkaoe4gxd2g2"]
+
+[ext_resource type="PackedScene" uid="uid://doc370c6xrbva" path="res://Levels/level.tscn" id="1_ybp5a"]
+[ext_resource type="PackedScene" uid="uid://bho5fe085vbbl" path="res://Objects/blue_cube.tscn" id="2_2viu6"]
+
+[node name="Level1" instance=ExtResource("1_ybp5a")]
+
+[node name="PlayerStart" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="BlueCube" parent="." index="2" instance=ExtResource("2_2viu6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53509, 0, -3.54654)

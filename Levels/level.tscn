@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://doc370c6xrbva"]
+
+[ext_resource type="Texture2D" uid="uid://donu3xn1355ks" path="res://Textures/cobblestone_03_diff_1k.jpg" id="1_pscpd"]
+[ext_resource type="Script" path="res://Levels/level.gd" id="1_uoywf"]
+[ext_resource type="Texture2D" uid="uid://bqcphp2jqj7mf" path="res://Textures/cobblestone_03_nor_gl_1k.jpg" id="2_gb60g"]
+[ext_resource type="Texture2D" uid="uid://qi77xsu76ges" path="res://Textures/cobblestone_03_rough_1k.jpg" id="3_lca26"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kefyx"]
+albedo_color = Color(0.811765, 0.698039, 0.658824, 1)
+albedo_texture = ExtResource("1_pscpd")
+roughness_texture = ExtResource("3_lca26")
+normal_enabled = true
+normal_texture = ExtResource("2_gb60g")
+uv1_scale = Vector3(5, 5, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6k7cj"]
+material = SubResource("StandardMaterial3D_kefyx")
+size = Vector2(40, 40)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hqbim"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_uoywf")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_6k7cj")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_hqbim")

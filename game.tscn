@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://c40ldkd1iotl5"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_50q6a"]
+[ext_resource type="PackedScene" uid="uid://3ncyospcrbnn" path="res://Player/player.tscn" id="2_6qcch"]
+[ext_resource type="Texture2D" uid="uid://clhj8gam8me1e" path="res://Levels/start_bg.png" id="3_bcgoq"]
+
+[sub_resource type="Theme" id="Theme_uyf3x"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_50q6a")
+
+[node name="Player" parent="." instance=ExtResource("2_6qcch")]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="StartScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="StartBg" type="Sprite2D" parent="StartScreen"]
+position = Vector2(575.5, 281.5)
+scale = Vector2(0.389151, 0.402232)
+texture = ExtResource("3_bcgoq")
+
+[node name="StartButton" type="Button" parent="StartScreen"]
+offset_left = 742.0
+offset_top = 487.0
+offset_right = 1120.0
+offset_bottom = 634.0
+theme_override_font_sizes/font_size = 48
+text = "START"
+
+[node name="GameTitle" type="Label" parent="StartScreen"]
+offset_left = 36.0
+offset_top = 20.0
+offset_right = 809.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 72
+text = "TOUCH THE BLUE BOX
+"
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+offset_right = 1156.0
+offset_bottom = 672.0
+color = Color(0.254902, 0, 0.0196078, 0.305882)
+
+[node name="YouLose" type="Label" parent="GameOver"]
+offset_left = 125.0
+offset_top = 124.0
+offset_right = 1087.0
+offset_bottom = 397.0
+theme_override_font_sizes/font_size = 200
+text = "YOU LOSE"
+
+[node name="Completed" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Completed"]
+offset_right = 1156.0
+offset_bottom = 672.0
+color = Color(0, 0.286275, 0.231373, 0.309804)
+
+[node name="YouWin" type="Label" parent="Completed"]
+offset_left = 147.0
+offset_top = 125.0
+offset_right = 1029.0
+offset_bottom = 398.0
+theme = SubResource("Theme_uyf3x")
+theme_override_font_sizes/font_size = 200
+text = "YOU WIN"
+
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="player_wins" from="Player" to="." method="_on_player_player_wins"]
+[connection signal="pressed" from="StartScreen/StartButton" to="." method="_on_start_button_pressed"]
